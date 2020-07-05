@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
      }
      
      private func setupConstraints() {
-        let mainView = MainView(frame: view.bounds)
+        let mainView = MainView(viewModel: HomeViewModelImpl(), frame: view.bounds)
          view.addSubview(mainView)
      }
 

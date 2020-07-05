@@ -1,5 +1,5 @@
 //
-//  MainViewModel.swift
+//  ViewModel.swift
 //  MoviesDB
 //
 //  Created by Federico Torres on 04/07/2020.
@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RxSwift
 
-
-class MainViewModel {
+protocol HomeViewModel {
+    func getMovies(category: Movie.Category, page: Int?) -> Single<[Movie]>
     
 }

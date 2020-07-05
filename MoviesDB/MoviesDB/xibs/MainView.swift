@@ -8,12 +8,32 @@
 
 import UIKit
 import Foundation
+import RxSwift
 
 class MainView: UIView, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    private let disposeBag = DisposeBag()
+    
+    init(viewModel: HomeViewModel, frame: CGRect){
+        self.viewModel = viewModel
+        super.init(frame: frame)
+        customInit()
+        //TODO change
+        viewModel.getMovies(category: .popular, page: 1)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { movies in
+                dump(movies)
+                print("Success response!!")
+            }, onError:  { error in
+                print(error)
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    private var viewModel : HomeViewModel? = nil
     private let cellId = "CellView"
     private let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
                         "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
@@ -33,8 +53,6 @@ class MainView: UIView, UISearchBarDelegate, UITableViewDataSource, UITableViewD
         super.init(coder: coder)
         customInit()
     }
-    
-    
     
     private func customInit(){
         let nib = UINib(nibName: "MainView", bundle: nil)
