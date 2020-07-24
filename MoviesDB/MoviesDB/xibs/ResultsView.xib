@@ -7,10 +7,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="MoviesDB" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultsViewController" customModule="MoviesDB" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="PbC-ZE-SZi" id="cGT-DI-Ehq"/>
-                <outlet property="view" destination="iN0-l3-epB" id="ag5-MO-T4u"/>
+                <outlet property="containerView" destination="iN0-l3-epB" id="d4W-Iz-bFS"/>
+                <outlet property="tableView" destination="CiE-uj-gKe" id="KjY-Y0-Uys"/>
+                <outlet property="view" destination="iN0-l3-epB" id="pEx-QU-BkL"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,20 +19,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PbC-ZE-SZi">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CiE-uj-gKe">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="PbC-ZE-SZi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NlI-E9-NBv"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PbC-ZE-SZi" secondAttribute="trailing" id="XhT-lk-ZiU"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="PbC-ZE-SZi" secondAttribute="bottom" id="lSf-NE-MRr"/>
-                <constraint firstItem="PbC-ZE-SZi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="osv-ki-yeY"/>
+                <constraint firstItem="CiE-uj-gKe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="GPx-JY-RWn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="CiE-uj-gKe" secondAttribute="bottom" id="PBN-ex-iAg"/>
+                <constraint firstItem="CiE-uj-gKe" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="o23-dS-38o"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CiE-uj-gKe" secondAttribute="trailing" id="wwG-5K-B2O"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-62" y="-38"/>
+            <point key="canvasLocation" x="132" y="153"/>
         </view>
     </objects>
 </document>
