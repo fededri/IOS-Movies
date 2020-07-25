@@ -14,7 +14,7 @@ class ResultsViewController : BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     let cellIdentifier = "MovieCell"
-    var data : [String] = []
+    var data : [Movie] = []
     private let viewModel : HomeViewModel!
     
     // MARK: - Init -
@@ -43,7 +43,7 @@ extension ResultsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CellView
         
-        cell.setTitle(title: data[indexPath.row])
+        cell.setTitle(title: data[indexPath.row].title)
         return cell
     }
     

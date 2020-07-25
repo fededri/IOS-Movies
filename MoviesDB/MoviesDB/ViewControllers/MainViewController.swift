@@ -7,31 +7,44 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
     
     var searchController = UISearchController(searchResultsController: nil)
     let cellIdentifier = "MovieCell"
     var resultsController : ResultsViewController!
-    let viewModel = HomeViewModelImpl() //TODO refactor
-    let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
-                "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
-                "Dallas, TX", "Detroit, MI", "San Jose, CA", "Indianapolis, IN",
-                "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
-                "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
+    private let viewModel : HomeViewModel!
+    private let disposeBag = DisposeBag()
     
-    var filteredData: [String] = []
+    var data : [Movie] = []
+    
+    var filteredData: [Movie] = []
     private var isSearching : Bool = false
     
     
     
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - Init
+    init(viewModel : HomeViewModel, nibName: String? = nil) {
+        self.viewModel = viewModel
+        super.init(nibName: nibName)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        return nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         
+        startListeningState()
+        viewModel.initialize()
+        self.title = "Movies Demo"
         let tableViewCellNib = UINib(nibName: "CellViewXib", bundle: nil)
         tableView.register(tableViewCellNib, forCellReuseIdentifier: cellIdentifier)
         tableView.delegate = self
@@ -56,6 +69,15 @@ class MainViewController: UIViewController {
         view.addSubview(mainView)
     }
     
+    private func startListeningState(){
+        viewModel.getMoviesDriver()
+            .drive(onNext: { (movies) in
+                self.data = movies
+                self.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+    }
+    
     
 }
 
@@ -69,37 +91,28 @@ extension MainViewController : UITableViewDelegate {
 
 extension MainViewController : UITableViewDataSource {
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CellView
         
-        if(isSearching){
-            cell.setTitle(title: filteredData[indexPath.row])
-        } else {
-            cell.setTitle(title: data[indexPath.row])
-        }
-        
+        cell.setTitle(title: data[indexPath.row].title)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(isSearching){
-            return filteredData.count
-        } else {
-            return data.count
-        }
+        return data.count
     }
 }
 
 // MARK: - UISearchResultsUpdating
 extension MainViewController : UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         if let newText  = searchController.searchBar.text{
             if(!newText.isEmpty){
-                filteredData = data.filter { $0.contains(newText)}
+                filteredData = data.filter { $0.title.contains(newText)}
                 
                 if let resultsController = searchController.searchResultsController as? ResultsViewController {
                     
+                    //TODO
                     resultsController.data = filteredData
                     resultsController.tableView.reloadData()
                 }
