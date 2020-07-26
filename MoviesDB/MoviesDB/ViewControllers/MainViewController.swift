@@ -49,6 +49,7 @@ class MainViewController: BaseViewController {
         tableView.register(tableViewCellNib, forCellReuseIdentifier: cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         
         resultsController = ResultsViewController(viewModel: viewModel,nibName: "ResultsView")
         
@@ -72,10 +73,14 @@ class MainViewController: BaseViewController {
     private func startListeningState(){
         viewModel.getMoviesDriver()
             .drive(onNext: { (movies) in
-                self.data = movies
-                self.tableView.reloadData()
+                self.updateUI(state: movies)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func updateUI(state: [Movie]){
+        self.data = state
+        self.tableView.reloadData()
     }
     
     
@@ -84,6 +89,9 @@ class MainViewController: BaseViewController {
 // MARK: - UITableViewDelegate
 extension MainViewController : UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.contentView.layer.masksToBounds = true
+    }
     
 }
 
@@ -94,7 +102,8 @@ extension MainViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CellView
         
-        cell.setTitle(title: data[indexPath.row].title)
+        cell.configure(with: data[indexPath.row])
+        cell.configureBorders()
         return cell
     }
     
