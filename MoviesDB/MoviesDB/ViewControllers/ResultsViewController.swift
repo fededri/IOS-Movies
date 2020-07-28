@@ -13,7 +13,7 @@ class ResultsViewController : BaseViewController {
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
-    let cellIdentifier = "MovieCell"
+    let cellIdentifier = "ResultCell"
     var data : [Movie] = []
     private let viewModel : HomeViewModel!
     
@@ -30,10 +30,11 @@ class ResultsViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tableViewCellNib = UINib(nibName: "CellViewXib", bundle: nil)
+        let tableViewCellNib = UINib(nibName: "ResultCellView", bundle: nil)
         tableView.register(tableViewCellNib, forCellReuseIdentifier: cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
     }
 }
 
@@ -41,9 +42,9 @@ class ResultsViewController : BaseViewController {
 extension ResultsViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CellView
+           let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ResultCellView
         
-        cell.setTitle(title: data[indexPath.row].title)
+        cell.configure(movie: data[indexPath.row])
         return cell
     }
     

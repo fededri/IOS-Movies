@@ -65,11 +65,6 @@ class MainViewController: BaseViewController {
         navigationItem.searchController = searchController
     }
     
-    private func setupConstraints() {
-        let mainView = MainView(viewModel: viewModel, frame: view.bounds)
-        view.addSubview(mainView)
-    }
-    
     private func startListeningState(){
         viewModel.getMoviesDriver()
             .drive(onNext: { (movies) in
@@ -117,7 +112,7 @@ extension MainViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let newText  = searchController.searchBar.text{
             if(!newText.isEmpty){
-                filteredData = data.filter { $0.title.contains(newText)}
+                filteredData = data.filter { $0.title.lowercased().contains(newText.lowercased())}
                 
                 if let resultsController = searchController.searchResultsController as? ResultsViewController {
                     

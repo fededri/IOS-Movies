@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UITableViewCell"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ResultCellView" customModule="MoviesDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="490" height="162"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leG-Bd-ptl" userLabel="ContentView">
+                    <rect key="frame" x="5" y="64" width="490" height="84"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harry Potter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sg8-LE-gKa">
+                            <rect key="frame" x="65" y="5" width="405" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wIF-b7-uVE">
+                            <rect key="frame" x="5" y="5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="1gs-OK-ngk"/>
+                                <constraint firstAttribute="height" constant="40" id="kPq-Gs-XR0"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Harry Potter and the prisonsrnsandnasdandadnsdnasdnsdnasdnadsnads" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4L9-T1-pWs">
+                            <rect key="frame" x="65" y="30.5" width="405" height="53.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="sg8-LE-gKa" firstAttribute="top" secondItem="leG-Bd-ptl" secondAttribute="top" constant="5" id="2nj-xR-4Py"/>
+                        <constraint firstItem="wIF-b7-uVE" firstAttribute="leading" secondItem="leG-Bd-ptl" secondAttribute="leading" constant="5" id="5XB-3N-Wma"/>
+                        <constraint firstAttribute="trailing" secondItem="4L9-T1-pWs" secondAttribute="trailing" constant="20" id="B7o-EV-9dI"/>
+                        <constraint firstItem="wIF-b7-uVE" firstAttribute="top" secondItem="leG-Bd-ptl" secondAttribute="top" constant="5" id="Okd-fP-9b4"/>
+                        <constraint firstItem="4L9-T1-pWs" firstAttribute="top" secondItem="sg8-LE-gKa" secondAttribute="bottom" constant="5" id="QdB-9U-lhG"/>
+                        <constraint firstAttribute="trailing" secondItem="sg8-LE-gKa" secondAttribute="trailing" constant="20" id="XMi-N5-SCY"/>
+                        <constraint firstItem="sg8-LE-gKa" firstAttribute="leading" secondItem="wIF-b7-uVE" secondAttribute="trailing" constant="20" id="csF-Bm-x18"/>
+                        <constraint firstItem="4L9-T1-pWs" firstAttribute="leading" secondItem="sg8-LE-gKa" secondAttribute="leading" id="hzI-Wd-vlc"/>
+                        <constraint firstAttribute="bottom" secondItem="4L9-T1-pWs" secondAttribute="bottom" id="lUi-uU-6vb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="leG-Bd-ptl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="0v9-o2-EqS"/>
+                <constraint firstItem="leG-Bd-ptl" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="5" id="91f-RZ-g9y"/>
+                <constraint firstItem="leG-Bd-ptl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="Drw-x1-Io1"/>
+                <constraint firstItem="leG-Bd-ptl" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="20" id="eA7-1C-J2n"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="4L9-T1-pWs" id="aq3-d1-Em3"/>
+                <outlet property="movieImageView" destination="wIF-b7-uVE" id="Gco-nW-Vo3"/>
+                <outlet property="titleLabel" destination="sg8-LE-gKa" id="Yje-Pu-ycP"/>
+            </connections>
+            <point key="canvasLocation" x="-52.173913043478265" y="8.7053571428571423"/>
+        </view>
+    </objects>
+</document>
