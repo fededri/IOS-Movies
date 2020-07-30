@@ -30,11 +30,18 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Harry Potter and the prisonsrnsandnasdandadnsdnasdnsdnasdnadsnads" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4L9-T1-pWs">
-                            <rect key="frame" x="65" y="30.5" width="405" height="53.5"/>
+                            <rect key="frame" x="65" y="30.5" width="405" height="42.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNz-Vs-U5I" userLabel="Divider">
+                            <rect key="frame" x="10" y="83" width="470" height="1"/>
+                            <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="vBk-Oz-wAY"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
@@ -43,10 +50,13 @@
                         <constraint firstAttribute="trailing" secondItem="4L9-T1-pWs" secondAttribute="trailing" constant="20" id="B7o-EV-9dI"/>
                         <constraint firstItem="wIF-b7-uVE" firstAttribute="top" secondItem="leG-Bd-ptl" secondAttribute="top" constant="5" id="Okd-fP-9b4"/>
                         <constraint firstItem="4L9-T1-pWs" firstAttribute="top" secondItem="sg8-LE-gKa" secondAttribute="bottom" constant="5" id="QdB-9U-lhG"/>
+                        <constraint firstAttribute="bottom" secondItem="XNz-Vs-U5I" secondAttribute="bottom" id="RGG-8Z-a81"/>
                         <constraint firstAttribute="trailing" secondItem="sg8-LE-gKa" secondAttribute="trailing" constant="20" id="XMi-N5-SCY"/>
+                        <constraint firstItem="XNz-Vs-U5I" firstAttribute="leading" secondItem="leG-Bd-ptl" secondAttribute="leading" constant="10" id="YjW-W9-n7r"/>
                         <constraint firstItem="sg8-LE-gKa" firstAttribute="leading" secondItem="wIF-b7-uVE" secondAttribute="trailing" constant="20" id="csF-Bm-x18"/>
                         <constraint firstItem="4L9-T1-pWs" firstAttribute="leading" secondItem="sg8-LE-gKa" secondAttribute="leading" id="hzI-Wd-vlc"/>
-                        <constraint firstAttribute="bottom" secondItem="4L9-T1-pWs" secondAttribute="bottom" id="lUi-uU-6vb"/>
+                        <constraint firstItem="XNz-Vs-U5I" firstAttribute="top" secondItem="4L9-T1-pWs" secondAttribute="bottom" constant="10" id="lUi-uU-6vb"/>
+                        <constraint firstAttribute="trailing" secondItem="XNz-Vs-U5I" secondAttribute="trailing" constant="10" id="nEX-bu-31Y"/>
                     </constraints>
                 </view>
             </subviews>

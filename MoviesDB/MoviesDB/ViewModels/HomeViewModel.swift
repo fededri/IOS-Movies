@@ -11,7 +11,8 @@ import RxSwift
 import RxCocoa
 
 protocol HomeViewModel {
+    func loadMore()
     func getMovies(category: Movie.Category, page: Int?) -> Single<[Movie]>
-    func getMoviesDriver() -> Driver<[Movie]>
+    func getMoviesDriver() -> Driver<HomeState>
     func initialize()
 }

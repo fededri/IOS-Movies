@@ -53,11 +53,12 @@ enum ApiRouter: URLRequestConvertible {
     //MARK - Parameters
     private var parameters: Parameters? {
         switch self {
-        case .getMovies:
+        case .getMovies(_, let page):
           return [
               "api_key"       : NetworkConstants.apiKey,
               "language"      : "en-US",
-              "include_adult" : "false"
+              "include_adult" : "false",
+              "page"          : page
           ]
         }
     }

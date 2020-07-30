@@ -67,14 +67,14 @@ class MainViewController: BaseViewController {
     
     private func startListeningState(){
         viewModel.getMoviesDriver()
-            .drive(onNext: { (movies) in
-                self.updateUI(state: movies)
+            .drive(onNext: { (state) in
+                self.updateUI(state: state)
             })
             .disposed(by: disposeBag)
     }
     
-    private func updateUI(state: [Movie]){
-        self.data = state
+    private func updateUI(state: HomeState){
+        self.data = state.movies
         self.tableView.reloadData()
     }
     
@@ -85,9 +85,24 @@ class MainViewController: BaseViewController {
 extension MainViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        //Check if reached bottom
+        if(indexPath.row == data.count - 1){
+            self.viewModel.loadMore()
+        }
+        
+        
         cell.contentView.layer.masksToBounds = true
+        
+        //Run animation
+        let scaleFactor : CGFloat = 0.6
+        cell.transform = CGAffineTransform.identity.scaledBy(x: scaleFactor, y: scaleFactor)
+        cell.alpha = 0.5
+        UIView.animate(withDuration: 0.3) {
+            cell.transform = .identity
+            cell.alpha = 1.0
+        }
     }
-    
 }
 
 // MARK: - UITableViewDataSource
@@ -120,8 +135,6 @@ extension MainViewController : UISearchResultsUpdating {
                     resultsController.data = filteredData
                     resultsController.tableView.reloadData()
                 }
-                
-                
             }
         }
     }
